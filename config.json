@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "defaultHost": "<from-proxy>",
+  "defaultProxy": "https://proxy.mcraft.fun",
+  "mapsProvider": "https://maps.mcraft.fun/",
+  "skinTexturesProxy": "",
+  "peerJsServer": "",
+  "peerJsServerFallback": "https://p2p.mcraft.fun",
+  "promoteServers": [
+    {
+      "ip": "wss://mythic.lat",
+      "name": "Mythical Network"
+    }
+  ],
+  "rightSideText": "",
+  "splashText": "solocentral.org",
+  "pauseLinks": [
+    [
+      {
+        "type": "github"
+      },
+      {
+        "type": "discord"
+      }
+    ]
+  ],
+  "defaultUsername": "mythic{0-9999}",
+  "mobileButtons": [
+    {
+      "action": "general.drop",
+      "actionHold": "general.dropStack",
+      "label": "Q"
+    },
+    {
+      "action": "general.selectItem",
+      "actionHold": "",
+      "label": "S"
+    },
+    {
+      "action": "general.debugOverlay",
+      "actionHold": "general.debugOverlayHelpMenu",
+      "label": "F3"
+    },
+    {
+      "action": "general.playersList",
+      "actionHold": "",
+      "icon": "pixelarticons:users",
+      "label": "TAB"
+    },
+    {
+      "action": "general.chat",
+      "actionHold": "",
+      "label": ""
+    },
+    {
+      "action": "ui.pauseMenu",
+      "actionHold": "",
+      "label": ""
+    }
+  ]
+}
