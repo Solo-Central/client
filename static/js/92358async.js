@@ -1,44 +1,25 @@
-
-/* For testing the performance of any block of code. It averages every 100 runs and prints to the console. To use, simply place the following around the code block you'd like to test:
-performanceTest(()=>{
-}); */
-// let performanceTestTimes = [];
-// function performanceTest(action) {
-// 	let performanceTestValue = performance.now();
-// 	action();
-// 	performanceTestTimes.push(performance.now() - performanceTestValue);
-// 	if (performanceTestTimes.length >= 100) {
-// 		console.log(performanceTestTimes.reduce((a, b) => a + b) / performanceTestTimes.length);
-// 		performanceTestTimes = [];
-// 	}
-// }
-
 let canvasReal;
 let ctxReal;
 let canvas;
 let ctx;
-const cwidth = 1000;
-const cheight = 1000;
+const cwidth = window.innerWidth;
+const cheight = window.innerHeight;
 let pixelRatio;
 let addedZoom = 1;
 let highQual = true;
 const requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
 const browserPasteSolution = typeof navigator.clipboard.readText === "function";
 const browserCopySolution = typeof navigator.clipboard.write === "function";
-let copyButton = 0; // Hack to make copying work on Safari.
+let copyButton = 0;
 const isMobile = isTouchDevice();
-
-// offscreen canvases
 let osc1, osctx1;
 let osc2, osctx2;
 let osc3, osctx3;
 let osc4, osctx4;
 let osc5, osctx5;
-// explore level thumbnails
 const thumbs = new Array(8);
 const thumbsctx = new Array(8);
 let thumbBig, thumbBigctx;
-
 let _xmouse = 0;
 let _ymouse = 0;
 let _pxmouse = 0;
@@ -54,8 +35,6 @@ let _frameCount = 0;
 let qTimer = 0;
 let inputText = '';
 let textAfterCursorAtClick = '';
-// let controlOrCommandPress = false;
-
 let levelsString = '';
 let levelCount = 53;
 let f = 19;
@@ -77,7 +56,6 @@ let lineLength = 0;
 let dialogueChar = new Array(levelCount);
 let dialogueText = new Array(levelCount);
 let dialogueFace = new Array(levelCount);
-// Why are these next three arrays of length levelCount?
 let cLevelDialogueChar = new Array(levelCount);
 let cLevelDialogueText = new Array(levelCount);
 let cLevelDialogueFace = new Array(levelCount);
@@ -111,7 +89,19 @@ let whiteAlpha = 0;
 let coinAlpha = 0;
 let searchParams = new URLSearchParams(window.location.href);
 let [levelId, levelpackId] = [searchParams.get("https://coppersalts.github.io/HTML5b/?level"), searchParams.get("https://coppersalts.github.io/HTML5b/?levelpack")]
-const difficultyMap = [
+
+window.addEventListener('resize', () => {
+    if (canvasReal) {
+        canvasReal.width = window.innerWidth;
+        canvasReal.height = window.innerHeight;
+    }
+});
+
+document.body.style.margin = '0';
+document.body.style.padding = '0';
+document.body.style.overflow = 'hidden';
+document.documentElement.style.margin = '0';
+document.documentElement.style.padding = '0';const difficultyMap = [
 	["Unknown", "#e6e6e6"],
 	["Easy", "#85ff85"],
 	["Normal", "#ffff00"],
